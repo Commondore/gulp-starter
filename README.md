@@ -1,7 +1,6 @@
 # Стартовая сборка на Gulp
 
 ## :memo: Описание сборки
-* именование классов по [БЭМ](https://ru.bem.info/)
 * используются препроцессоры [Pug](https://pugjs.org/) и [SASS](https://sass-lang.com/)
 * используется транспайлер [Babel](https://babeljs.io/) для поддержки современного JavaScript (ES6) в браузерах
 * используется [Webpack](https://webpack.js.org/) для сборки JavaScript-модулей
