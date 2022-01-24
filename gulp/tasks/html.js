@@ -6,8 +6,8 @@ import notify from "gulp-notify";
 import webpHtml from "gulp-webp-html-nosvg";
 
 const html = () => {
-  return app
-    .gulp.src(path.html.src)
+  return app.gulp
+    .src(path.html.src)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -18,7 +18,8 @@ const html = () => {
     )
     .pipe(fileInclude())
     .pipe(webpHtml())
-    .pipe(app.gulp.dest(path.html.dest));
+    .pipe(app.gulp.dest(path.html.dest))
+    .pipe(app.browserSync.stream());
 };
 
 
