@@ -18,6 +18,7 @@ import js from "./gulp/tasks/js.js";
 import img from "./gulp/tasks/img.js";
 import fonts from "./gulp/tasks/fonts.js";
 import sprite from "./gulp/tasks/sprite.js";
+import files from "./gulp/tasks/files.js";
 
 const server = () => {
   browserSync.init({
@@ -34,6 +35,7 @@ const watcher = (cb) => {
   watch(path.img.watch, img);
   watch(path.fonts.watch, fonts);
   watch(path.sprite.watch, sprite);
+  watch(path.files.watch, files);
   cb()
 }
 
@@ -41,7 +43,7 @@ const watcher = (cb) => {
 
 const build = series(
   clean,
-  parallel(pug, sass, js, img, fonts, sprite)
+  parallel(pug, sass, js, img, fonts, sprite, files)
 )
 
 const dev = series(build, parallel(watcher, server));
