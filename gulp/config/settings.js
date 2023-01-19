@@ -56,7 +56,7 @@ export default {
   // ],
 
   imagemin: {
-    verbose: true
+    verbose: true,
   },
 
   replace: {

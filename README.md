@@ -136,3 +136,19 @@ project
   ```
     +svg('имя иконки', 'имя класса иконки')
   ```
+
+### Настройки для подсказки пути
+* Для того чтобы было удобно указывать путь до файлов внутри HTML, PUG, CSS, SASS и работали подсказки необходимо установить плагин [Path Autocomplete](https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete) для редактора VS Code
+* Затем в настройках редактора в JSON конфиге добавить следующий код:
+```
+  ...
+
+  "path-autocomplete.pathMappings": {
+    "@img": "${folder}/src/img",
+    "@sass": "${folder}/src/sass",
+    "@js": "${folder}/src/js",
+    "~": "${folder}/"
+
+    ...
+  }
+```

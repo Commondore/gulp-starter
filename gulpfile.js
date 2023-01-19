@@ -1,9 +1,9 @@
 import gulp from "gulp";
-const {watch, series, parallel, task} = gulp;
+const { watch, series, parallel, task } = gulp;
 import brSync from "browser-sync";
 const browserSync = brSync.create();
 
-import path from './gulp/config/path.js';
+import path from "./gulp/config/path.js";
 
 global.app = {
   gulp,
@@ -11,8 +11,8 @@ global.app = {
 };
 
 // tasks here
-import clean from './gulp/tasks/clean.js';
-import pug from "./gulp/tasks/pug.js";
+import clean from "./gulp/tasks/clean.js";
+import html from "./gulp/tasks/html.js";
 import sass from "./gulp/tasks/sass.js";
 import js from "./gulp/tasks/js.js";
 import img from "./gulp/tasks/img.js";
@@ -23,33 +23,31 @@ import files from "./gulp/tasks/files.js";
 const server = () => {
   browserSync.init({
     server: {
-      baseDir: path.root
-    }
-  })
-}
+      baseDir: path.root,
+    },
+  });
+};
 
 const watcher = (cb) => {
-  watch(path.pug.watch, pug);
+  watch(path.html.watch, html);
   watch(path.sass.watch, sass);
   watch(path.js.watch, js);
   watch(path.img.watch, img);
   watch(path.fonts.watch, fonts);
   watch(path.sprite.watch, sprite);
   watch(path.files.watch, files);
-  cb()
-}
-
-
+  cb();
+};
 
 const build = series(
   clean,
-  parallel(pug, sass, js, img, fonts, sprite, files)
-)
+  parallel(html, sass, js, img, fonts, sprite, files)
+);
 
 const dev = series(build, parallel(watcher, server));
 
-task('img', img);
-task("pug", pug);
+task("img", img);
+task("html", html);
 task("sass", sass);
 task("fonts", fonts);
 task("sprite", sprite);
